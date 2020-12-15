@@ -78,21 +78,15 @@ jsPsych.plugins['clk-norm-image'] = (function(){
       var endTime = performance.now();
       var response_time = endTime - startTime;
 
-      // create object to hold responses
-      var question_data = {};
+      // get response
       var matches = display_element.querySelectorAll('div.clk-norm-image-response');
-      for(var index=0; index<matches.length; index++){
-        var id = "Q" + index;
-        var val = matches[index].querySelector('textarea, input').value;
-        var obje = {};
-        obje[id] = val;
-        Object.assign(question_data, obje);
-      }
+      var response = matches[0].querySelector('textarea, input').value;
+
       // save data
       var trialdata = {
         "rt": response_time,
-        "responses": JSON.stringify(question_data),
-        "image": trial.stimulus
+        "response" : response,
+        "filename": trial.stimulus
       };
 
       display_element.innerHTML = '';

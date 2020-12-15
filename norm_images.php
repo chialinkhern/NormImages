@@ -40,6 +40,7 @@
 	filenames = shuffle(filenames)
 
     // initialize empty data structure
+    let out_data = {images: [], responses: [], rts: []}
 
     show_image = {
         type: "clk-norm-image",
@@ -49,8 +50,9 @@
             this.stimulus = "images/"+String(filenames[iterate_images.img_num])
         },
         on_finish: function(trialdata){
-            console.log(trialdata)
-            // TODO needs to push data in readable format
+            out_data.images.push(trialdata.filename.replace("images/", ""))
+            out_data.responses.push(trialdata.response)
+            out_data.rts.push(trialdata.rt)
         }
     }
 
@@ -59,6 +61,7 @@
       img_num: 0,
       loop_function: function(){
 	      iterate_images.img_num = iterate_images.img_num + 1
+	      console.log(out_data)
 	      if (iterate_images.img_num === filenames.length){
 	          return false
 	      }
