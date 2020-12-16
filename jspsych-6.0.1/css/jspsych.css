@@ -5,7 +5,6 @@
  * experiments look polished without any additional styles.
  */
 
-
  /* Container holding jsPsych content */
 
  .jspsych-display-element {
@@ -13,8 +12,8 @@
    flex-direction: column;
    /*justify-content: center;
    align-items: center;*/
-   /*height: 100%;
-   width: 100%;*/
+   /*height: 100%;*/
+   /*width: 100%;*/
    overflow-y: scroll;
  }
 
@@ -126,7 +125,7 @@ input[type="text"] {
 }
 
 .jspsych-btn-sw:disabled {
-  background-color: #eee;
+  background-color: #eeeeee;
   color: #aaa;
   border-color: #ccc;
   cursor: not-allowed;

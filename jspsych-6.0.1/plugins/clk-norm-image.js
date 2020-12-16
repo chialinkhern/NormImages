@@ -57,9 +57,11 @@ jsPsych.plugins['clk-norm-image'] = (function(){
     //add image
     var new_html =''
     new_html += '<form id="clk-norm-image-form">'
-    new_html += '<img src="'+trial.stimulus+'" id="clk-norm-image-stimulus"></img>';
+    new_html += '<div id="img" style="max-height:500px; max-width:500px; object-fit:contain; height:500px; width:500px; display:table-cell; vertical-align:middle">'
+    new_html += '<img src="'+trial.stimulus+'" id="clk-norm-image-stimulus" style="max-height:100%; max-width:100%">';
+    new_html += '</div>'
     // add response box
-    new_html += '<div id="asd" class="clk-norm-image-response">' // TODO lol idk what asd is supposed to be but it works
+    new_html += '<div id="response_box" class="clk-norm-image-response">' // TODO lol idk what asd is supposed to be but it works
     new_html += '<p><input type="text" id="input" name="#clk-norm-image-text-box' + 40 + '" size="40" autofocus="autofocus"></p>'
     new_html += '</div>'
 
