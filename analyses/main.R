@@ -3,11 +3,11 @@
 # Created by: chialinkhern
 # Created on: 12/18/20
 
-trials_df = read.csv("analyses/out/data.csv")
+trials_df = read.csv("out/data.csv")
 
 attach(trials_df)
 items_df = aggregate(rts~images, FUN="mean")
-colnames(items_df) = c("images","mean_rts")
+colnames(items_df) = c("../images", "mean_rts")
 items_df = add_all_responses(items_df)
 items_df = add_top_3(items_df)
 
