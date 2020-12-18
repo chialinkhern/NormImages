@@ -78,7 +78,7 @@ is_typo = function(correct_response, response){ # returns whether or not respons
     }
   }
   proportion_match = num_match/length(correct_response)
-  if (proportion_match > 0.7 & (length(correct_response)>=length(response))){ # if 60% of correct_response's letters are found AND if response is not longer than correct_response
+  if (proportion_match > 0.7 & (0<(length(correct_response)-length(response))) & (length(correct_response) - length(response)<2)){ # if 60% of correct_response's letters are found AND if response is not longer than correct_response
     return(TRUE)
   }
   else {return(FALSE)}
