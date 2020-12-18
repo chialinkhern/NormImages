@@ -1,5 +1,5 @@
 # Title     : functions
-# Objective : various functions TODO: split them up
+# Objective : various functions
 # Created by: chialinkhern
 # Created on: 12/18/20
 
