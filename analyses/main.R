@@ -12,3 +12,5 @@ colnames(items_df) = c("images", "mean_rts")
 items_df = add_all_responses(items_df, trials_df)
 items_df = add_top_3(items_df)
 items_df = add_proportion_correct(items_df)
+
+write.csv(items_df, "analyses/out/items.csv", row.names=FALSE)
