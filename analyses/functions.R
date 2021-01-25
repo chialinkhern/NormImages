@@ -3,29 +3,6 @@
 # Created by: chialinkhern
 # Created on: 12/18/20
 
-add_all_responses = function(items_df, trials_df){
-  for (image in items_df$images){
-    items_df$all_responses[items_df$images==image] = get_all_responses(image, trials_df)
-  }
-  return(items_df)
-}
-
-add_proportion_correct = function(items_df){
-  for (item in items_df$images){
-    image_name = strsplit(item, "\\.")[[1]][1]
-    items_df$proportion_correct[items_df$images==item] = compute_proportion_correct(image_name, items_df[items_df$images==item,]$all_responses)
-  }
-  return (items_df)
-}
-
-
-add_top_3 = function(items_df){
-  for (item in items_df$images){
-    items_df$top_3[items_df$images==item] = get_top_3(items_df$all_responses[items_df$images==item])
-  }
-  return(items_df)
-}
-
 compute_proportion_correct = function(correct_response, all_responses){
   all_responses = strsplit(all_responses, ",")[[1]]
   num_responses = length(all_responses)
@@ -37,6 +14,13 @@ compute_proportion_correct = function(correct_response, all_responses){
   }
   proportion_correct = num_correct/num_responses
   return(proportion_correct)
+}
+
+compute_proportion_top = function(responses){
+  responses = strsplit(responses, ",")[[1]]
+  num_top = sort(table(responses), decreasing=TRUE)[1]
+  proportion_top = as.numeric(num_top/length(responses))
+  return(proportion_top)
 }
 
 get_all_responses = function(image, trials_df){
@@ -100,11 +84,4 @@ read_and_attach_name = function(path_to_file){ # because I was too shortsighted 
   df = read.csv(path_to_file, stringsAsFactors=FALSE)
   df$subj_num = gsub(".csv", x=toString(path_to_file), replacement="")
   return(df)
-}
-
-compute_proportion_top = function(responses){
-  responses = strsplit(responses, ",")[[1]]
-  num_top = sort(table(responses), decreasing=TRUE)[1]
-  proportion_top = as.numeric(num_top/length(responses))
-  return(proportion_top)
 }
