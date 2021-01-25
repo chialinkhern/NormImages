@@ -18,8 +18,15 @@ compute_proportion_correct = function(correct_response, all_responses){
 
 compute_proportion_top = function(responses){
   responses = strsplit(responses, ",")[[1]]
-  num_top = sort(table(responses), decreasing=TRUE)[1]
-  proportion_top = as.numeric(num_top/length(responses))
+  num_responses = length(responses)
+  top = names(sort(table(responses), decreasing=TRUE)[1])
+  num_top = 0
+  for (response in responses){
+    if ((response==top)|is_typo(top, response)){
+      num_top = num_top + 1
+    }
+  }
+  proportion_top = num_top/num_responses
   return(proportion_top)
 }
 

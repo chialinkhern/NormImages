@@ -18,4 +18,4 @@ for (item in items_df$images){
   items_df$proportion_top[items_df$images==item] = compute_proportion_top(items_df$all_responses[items_df$images==item])
 }
 
-write.csv(items_df, "analyses/out/items2.csv", row.names=FALSE)
+write.csv(items_df, "analyses/out/items.csv", row.names=FALSE)
