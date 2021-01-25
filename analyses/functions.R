@@ -101,3 +101,10 @@ read_and_attach_name = function(path_to_file){ # because I was too shortsighted 
   df$subj_num = gsub(".csv", x=toString(path_to_file), replacement="")
   return(df)
 }
+
+compute_proportion_top = function(responses){
+  responses = strsplit(responses, ",")[[1]]
+  num_top = sort(table(responses), decreasing=TRUE)[1]
+  proportion_top = as.numeric(num_top/length(responses))
+  return(proportion_top)
+}
